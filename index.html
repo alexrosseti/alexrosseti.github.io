@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Rosseti | Palestrante</title>
+<meta name="description" content="Palestras, cursos e materiais do Alex Rosseti para jovens, famílias e educadores.">
+<meta property="og:title" content="Alex Rosseti | Palestrante">
+<meta property="og:description" content="Palestras, cursos e materiais para jovens, famílias e educadores.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14110f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #14110f;
+    --cartao: #1f1a17;
+    --borda: #33291f;
+    --texto: #f6efe6;
+    --suave: #b9aa98;
+    --ouro: #f2b441;
+    --ouro-escuro: #d99a1f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--fundo);
+    background-image: radial-gradient(90% 45% at 50% 0%, rgba(242,180,65,.20), transparent 70%);
+    background-repeat: no-repeat;
+    color: var(--texto);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  main { max-width: 480px; margin: 0 auto; padding: 0 16px 32px; }
+
+  /* Topo com foto grande */
+  .topo { text-align: center; }
+  .capa {
+    position: relative; margin: 0 -16px; height: min(118vw, 560px);
+    background: var(--cartao) url("fotos/topo.jpg") center 18% / cover no-repeat;
+  }
+  .capa::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(20,17,15,0) 45%, rgba(20,17,15,.75) 78%, var(--fundo) 100%);
+  }
+  .capa .etiqueta {
+    position: absolute; top: 16px; left: 16px; z-index: 1;
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--texto); background: rgba(20,17,15,.55); border: 1px solid rgba(246,239,230,.25);
+    border-radius: 999px; padding: 6px 12px; backdrop-filter: blur(6px);
+  }
+  .identidade { position: relative; margin-top: -92px; z-index: 1; }
+  h1 { font-family: "Fraunces", Georgia, serif; font-size: 38px; font-weight: 700; letter-spacing: -.01em; line-height: 1.1; }
+
+  /* Galeria que desliza para o lado */
+  .galeria {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -16px; padding: 0 16px 6px; scrollbar-width: none;
+  }
+  .galeria::-webkit-scrollbar { display: none; }
+  .galeria figure {
+    flex: 0 0 68%; scroll-snap-align: center; position: relative;
+    border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--cartao);
+  }
+  .galeria img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .dica { color: var(--suave); font-size: 12px; text-align: center; margin-top: 8px; }
+
+  /* Foto larga com frase */
+  .destaque {
+    position: relative; margin-top: 28px; border-radius: 18px; overflow: hidden;
+    aspect-ratio: 3 / 2; background: var(--cartao);
+  }
+  .destaque img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .destaque::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(20,17,15,.92) 0%, rgba(20,17,15,.25) 60%, rgba(20,17,15,0) 100%);
+  }
+  .destaque p {
+    position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1;
+    font-family: "Fraunces", Georgia, serif; font-size: 20px; font-weight: 600; line-height: 1.25;
+  }
+  .destaque p em { color: var(--ouro); font-style: normal; }
+  .arroba { color: var(--ouro); font-weight: 600; font-size: 14px; text-decoration: none; }
+  .frase { position: relative; z-index: 1; color: var(--suave); font-size: 15px; margin: 14px auto 0; max-width: 34ch; }
+
+  .numeros { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+  .numeros div {
+    flex: 1 1 0; min-width: 96px;
+    background: var(--cartao); border: 1px solid var(--borda); border-radius: 14px;
+    padding: 10px 6px; font-size: 12px; color: var(--suave);
+  }
+  .numeros strong { display: block; color: var(--texto); font-size: 17px; font-weight: 700; }
+
+  /* Seções */
+  h2 {
+    font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ouro); margin: 36px 4px 12px;
+  }
+
+  /* Produtos */
+  .produto {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--cartao); border: 1px solid var(--borda); border-radius: 18px;
+    padding: 18px; margin-bottom: 12px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .produto:hover, .produto:focus-visible { transform: translateY(-2px); border-color: var(--ouro); outline: none; }
+  .produto .selo {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--fundo); background: var(--ouro); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px;
+  }
+  .produto h3 { font-family: "Fraunces", Georgia, serif; font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .produto p { color: var(--suave); font-size: 14px; margin-top: 6px; }
+  .produto .botao {
+    display: block; text-align: center; margin-top: 14px;
+    background: var(--ouro); color: #1a1408; font-weight: 700; font-size: 15px;
+    border-radius: 12px; padding: 13px 16px;
+  }
+  .produto:hover .botao { background: var(--ouro-escuro); }
+
+  /* Links simples */
+  .link {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    text-decoration: none; color: var(--texto); font-weight: 600; font-size: 15px;
+    background: transparent; border: 1px solid var(--borda); border-radius: 14px;
+    padding: 15px 18px; margin-bottom: 10px;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .link:hover, .link:focus-visible { border-color: var(--ouro); background: var(--cartao); outline: none; }
+  .link span.seta { color: var(--ouro); font-size: 18px; }
+  .link small { display: block; color: var(--suave); font-weight: 400; font-size: 13px; margin-top: 2px; }
+
+  footer { text-align: center; color: var(--suave); font-size: 12px; margin-top: 36px; }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="topo">
+    <!-- Para trocar a foto do topo: troque o arquivo fotos/topo.jpg por outra foto em pé (vertical) -->
+    <div class="capa" role="img" aria-label="Alex Rosseti palestrando">
+      <span class="etiqueta">Palestrante</span>
+    </div>
+    <div class="identidade">
+    <h1>Alex Rosseti</h1>
+    <a class="arroba" href="https://www.instagram.com/alexrosseti/" target="_blank" rel="noopener">@alexrosseti</a>
+    </div>
+    <p class="frase">Na adolescência, uma palestra na escola mudou a minha vida. Hoje eu levo essa mesma virada para jovens, famílias e educadores.</p>
+
+    <div class="numeros">
+      <div><strong>+16 anos</strong>de palestras</div>
+      <div><strong>230 mil</strong>seguidores</div>
+      <div><strong>27 cidades</strong>em Minas</div>
+    </div>
+  </header>
+
+  <h2>Meus cursos e materiais</h2>
+  <section id="produtos"></section>
+
+  <h2>Nos palcos e nas escolas</h2>
+  <!-- Para trocar uma foto: troque o arquivo dentro da pasta fotos, mantendo o mesmo nome -->
+  <section class="galeria" aria-label="Fotos do Alex palestrando">
+    <figure><img src="fotos/palco-1.jpg" alt="Alex Rosseti falando ao público, de blazer azul" loading="lazy"></figure>
+    <figure><img src="fotos/palco-3.jpg" alt="Alex Rosseti no palco" loading="lazy"></figure>
+    <figure><img src="fotos/palco-2.jpg" alt="Alex Rosseti com a mão levantada durante a palestra" loading="lazy"></figure>
+    <figure><img src="fotos/palco-4.jpg" alt="Alex Rosseti com a camisa do Programa Despertar" loading="lazy"></figure>
+    <figure><img src="fotos/plateia-2.jpg" alt="Pátio de escola cheio de alunos durante a palestra" loading="lazy"></figure>
+    <figure><img src="fotos/palco-5.jpg" alt="Alex Rosseti de braços abertos diante da plateia" loading="lazy"></figure>
+    <figure><img src="fotos/palco-6.jpg" alt="Alex Rosseti em foto preto e branco no palco" loading="lazy"></figure>
+  </section>
+  <p class="dica">Deslize para o lado para ver mais fotos →</p>
+
+  <div class="destaque">
+    <img src="fotos/plateia.jpg" alt="Alex Rosseti falando para uma escola lotada" loading="lazy">
+    <p>Cada escola, <em>uma história de virada.</em></p>
+  </div>
+
+  <h2>Mais sobre o meu trabalho</h2>
+  <section id="links"></section>
+
+  <footer>© <span id="ano"></span> Alex Rosseti. Todos os direitos reservados.</footer>
+
+</main>
+
+<script>
+/* =====================================================================
+   PRODUTOS DA HOTMART
+   Para mudar: troque o texto entre aspas. Para ter mais um produto,
+   copie um bloco inteiro (de { até },) e cole logo abaixo.
+   ===================================================================== */
+const PRODUTOS = [
+  {
+    selo: "Para pais, alunos e educadores",
+    nome: "Seja Inabalável: O Despertar Contra o Bullying",
+    descricao: "Pacote com o livro Jovem Inabalável, o Guia Anti-Bullying e dois guias ilustrados para fortalecer o jovem em casa e na escola.",
+    botao: "Quero o pacote",
+    link: "https://go.hotmart.com/G103102312P"
+  },
+  {
+    selo: "eBook",
+    nome: "Seja Inabalável: o caminho para o sucesso através da resiliência",
+    descricao: "Para desenvolver resiliência e autoconfiança, seguir firme nos seus objetivos e crescer com as dificuldades.",
+    botao: "Quero ler",
+    link: "https://go.hotmart.com/R96893095F"
+  },
+  {
+    selo: "Curso para jovens",
+    nome: "Jovem Inabalável",
+    descricao: "Para o jovem que quer começar a gerar renda no digital e dar o primeiro passo rumo à independência financeira.",
+    botao: "Quero conhecer",
+    link: "https://go.hotmart.com/C101842928C"
+  },
+  {
+    selo: "Para palestrantes e educadores",
+    nome: "Palestra Despertar Jovem, na íntegra",
+    descricao: "Assista a uma palestra do começo ao fim e entenda como o trabalho do Programa Despertar é feito nas escolas.",
+    botao: "Quero assistir",
+    link: "https://go.hotmart.com/U103354966B"
+  },
+];
+
+/* OUTROS LINKS (aparecem embaixo dos produtos) */
+const LINKS = [
+  {
+    nome: "Levar a palestra para a minha escola ou cidade",
+    detalhe: "Programa Despertar, para alunos e professores",
+    link: "https://alexrosseti.com.br"
+  },
+  {
+    nome: "Ver os vídeos no Instagram",
+    detalhe: "@alexrosseti",
+    link: "https://www.instagram.com/alexrosseti/"
+  },
+];
+
+/* ---------- daqui para baixo não precisa mexer ---------- */
+function criar(tag, classe, texto) {
+  const el = document.createElement(tag);
+  if (classe) el.className = classe;
+  if (texto) el.textContent = texto;
+  return el;
+}
+const areaProdutos = document.getElementById("produtos");
+PRODUTOS.forEach(p => {
+  const a = criar("a", "produto");
+  a.href = p.link; a.target = "_blank"; a.rel = "noopener";
+  if (p.selo) a.appendChild(criar("span", "selo", p.selo));
+  a.appendChild(criar("h3", "", p.nome));
+  a.appendChild(criar("p", "", p.descricao));
+  a.appendChild(criar("span", "botao", p.botao || "Quero conhecer"));
+  areaProdutos.appendChild(a);
+});
+const areaLinks = document.getElementById("links");
+LINKS.forEach(l => {
+  const a = criar("a", "link");
+  a.href = l.link; a.target = "_blank"; a.rel = "noopener";
+  const texto = criar("span", "", l.nome);
+  if (l.detalhe) texto.appendChild(criar("small", "", l.detalhe));
+  a.appendChild(texto);
+  a.appendChild(criar("span", "seta", "→"));
+  areaLinks.appendChild(a);
+});
+document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
